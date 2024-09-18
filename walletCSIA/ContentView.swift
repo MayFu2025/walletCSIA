@@ -10,47 +10,35 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @State private var currentTab: String = "allExpenses"
+    
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        TabView(selection: $currentTab) {
+            graphScreen().tabItem { // Graphs
+                Label("Graphs", systemImage: "chart.pie.fill")
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
+            .tag("graphs")
+            
+            allExpense().tabItem {
+                Label("All Expenses", systemImage: "list.bullet.circle.fill")
             }
-        } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+            .tag("allExpenses")
+            
+            newExpense().tabItem { // Log new expense
+                Label("New Expense", systemImage: "plus.circle.fill")
             }
+            .tag("newExpense")
+            
+            allCards().tabItem { // All cards
+                Label("My Cards", systemImage: "creditcard.circle.fill")
+            }
+            .tag("cards")
+            
+            settings().tabItem { // All cards
+                Label("Settings", systemImage: "gearshape.fill")
+            }
+            .tag("settings")
         }
     }
 }

@@ -27,6 +27,6 @@ struct walletCSIAApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(for: [creditCard.self, Expense.self, Currency.self, Category.self])
     }
 }
