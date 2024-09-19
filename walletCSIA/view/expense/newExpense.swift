@@ -6,29 +6,45 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct newExpense: View {
     @Environment(\.modelContext) private var context
+    @Query private var creditCards: [creditCard]
+    @Query private var currencies: [Currency]
+    @Query private var categories: [Category]
+    
+    @Query(filter: #Predicate<Currency> { currency in
+        currency.isDefaultCurrency == true
+    }) var defaultCurrency: [Currency]
+    
     @State private var amount: Double = 0.0
-    @State private var currency: Currency?
+    @State private var currency: Currency
     @State private var card: creditCard?
-    @State private var category: Category?
+    @State private var category: Category
     @State private var date: Date = .init()
     @State private var note: String = ""
     
     var submitDisabled: Bool {
-        return amount.isZero || currency == nil || card == nil
+        return amount.isZero || card == nil
     }
-    
-    private var testList: Array<String> = ["Category1", "Category2", "Category3"]
-    private var currencySymbol: String = "$"
     
     var presentSuccess: Bool = false
     var presentFailiure: Bool = false
+    
     func createNewExpense(){
-        let expense = Expense(amount: amount, date: date, category: category!, card: card!, currency: currency!, note: note)
+        let expense = Expense(amount: amount, date: date, category: category, card: card!, currency: currency, note: note)
         context.insert(expense)
     }
+    
+    private func setDefaultValues() {  //TODO: ahhh wtf
+        let defaultCurrency = currencies.first(where: { $0.isDefaultCurrency })
+            currency = defaultCurrency
+        
+        let defaultCategory = categories.first(where: {$0.name == "Unclassified"}) {
+                category = defaultCategory
+            }
+        }
    
     
     var body: some View {
@@ -36,24 +52,24 @@ struct newExpense: View {
             List {
                 Section("Card") {
                     Picker("Select Card Used", selection: $card) {
-                        ForEach(testList, id: \.self) {
-                            testItem in Text(testItem).tag(testItem)
+                        ForEach(creditCards, id: \.self) {
+                            card in Text(card.name).tag(card)
                         }
                     }
                 }
                 
                 Section("Amount") {
                     Picker("Select Currency", selection: $currency){
-                        ForEach(testList, id: \.self) {
-                            testItem in
-                            Text(testItem)
-                                .tag(testItem)
+                        ForEach(currencies, id: \.self) {
+                            currency in
+                            Text(currency.acronym)
+                                .tag(currency)
                         }
                     }
                     .pickerStyle(.menu)
                     
                     HStack{
-                        Text(currencySymbol)
+                        Text(currency.symbol)
                         TextField("0.0", value: $amount, format: .currency(code: "US"))
                     }
                 }
@@ -68,10 +84,10 @@ struct newExpense: View {
                 
                 Section("Category"){
                     Picker("Select Category", selection: $category){
-                        ForEach(testList, id: \.self) {
-                            testItem in
-                            Text(testItem)
-                                .tag(testItem)
+                        ForEach(categories, id: \.self) {
+                            category in
+                            Text(category.name)
+                                .tag(category)
                         }
                     }
                     .pickerStyle(.menu)
@@ -87,6 +103,9 @@ struct newExpense: View {
             }
             .navigationTitle("Log New Expense")
         }
+        .onAppear {
+                    setDefaultValues()
+                }
     }
     
 }

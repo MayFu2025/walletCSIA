@@ -9,15 +9,26 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
+    var locale = Locale.current
+    @Environment(\.modelContext) private var context
     @State private var currentTab: String = "allExpenses"
     
     // App init.
-    let locale = Locale.current
-    @AppStorage("username") var username = ""
-    @AppStorage("usePasscode") var usePasscode = false
-    @AppStorage("useFaceID") var useFaceID = false
-//    @AppStorage("systemDefaultCurrencyCode") var systemDefaultCurrency = (locale.currencyCode ?? "")
+    init(locale: Foundation.Locale = Locale.current) {
+        self.locale = locale
+            
+        @AppStorage("username") var username = ""
+        @AppStorage("usePasscode") var usePasscode = false
+        @AppStorage("useFaceID") var useFaceID = false
+        @AppStorage("localDefaultCurrencyCode") var localDefaultCurrencyCode = locale.currency!.identifier
+        
+        let systemDefaultCurrency = Currency(acronym: locale.currency!.identifier, isDefaultCurrency: true)
+        context.insert(systemDefaultCurrency)
+        
+        let unclassifiedCategory = Category(name: "Unclassified")
+        context.insert(unclassifiedCategory)
+    }
+    
 
     var body: some View {
         TabView(selection: $currentTab) {
