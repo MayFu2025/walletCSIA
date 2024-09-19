@@ -17,10 +17,10 @@ struct newCardSheet: View {
     @State private var cardName: String = ""
     @State private var holderName: String = "" // Change to UserData Username
     @State private var providerIcon: String = "None"
-    @State private var color1: Color = Color.white
-    @State private var color2: Color = Color.white
+    @State private var color1: Color = Color.gray
+    @State private var color2: Color = Color.black
     
-    @State private var defaultCurrency: Currency = Currency(acronym: "HKD", isDefaultCurrency: false)  // Fix later
+    @State private var defaultCurrency: Currency = Currency(acronym: "HKD", isDefaultCurrency: false)  // TODO: Fix later
     @State private var cashbackRate: Double = 0.00
     
     
@@ -39,12 +39,9 @@ struct newCardSheet: View {
                     TextField("Enter card holder", text: $holderName)
                 }
                 Section("Card Provider") {
-                    Picker("Select Card Provider Logo", selection: $providerIcon){
-                        ForEach(Array(logoIcons.keys), id: \.self) {
-                            logo in
-                                Text(logo).tag(logoIcons[logo])
-                                print(logo)
-                                print(logoIcons[logo])
+                    Picker("Select Card Provider Logo", selection: $providerIcon) {
+                        ForEach(Array(logoIcons.keys), id: \.self) { logo in
+                            Text(logo).tag(logoIcons[logo] ?? "None")
                         }
                     }
                     .pickerStyle(.menu)
@@ -100,7 +97,7 @@ struct newCardSheet: View {
 }
 
 #Preview {
-    let container = try! ModelContainer(for: Category.self)
+    let container = try! ModelContainer(for: Currency.self, creditCard.self)
     return newCardSheet()
         .modelContext(container.mainContext)
 }

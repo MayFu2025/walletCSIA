@@ -17,7 +17,7 @@ struct ContentView: View {
     @AppStorage("username") var username = ""
     @AppStorage("usePasscode") var usePasscode = false
     @AppStorage("useFaceID") var useFaceID = false
-    @AppStorage("systemDefaultCurrencyCode") var systemDefaultCurrency = (locale.currencyCode ?? "")
+//    @AppStorage("systemDefaultCurrencyCode") var systemDefaultCurrency = (locale.currencyCode ?? "")
 
     var body: some View {
         TabView(selection: $currentTab) {

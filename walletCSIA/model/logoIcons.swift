@@ -7,7 +7,7 @@
 
 import Foundation
 
-var logoIcons = ["None" : nil,
+var logoIcons = ["None" : "None",
                  "Alipay" : "AlipayIcon",
                  "American Express" : "AmexIcon",
                  "Diners" : "DinersIcon",
