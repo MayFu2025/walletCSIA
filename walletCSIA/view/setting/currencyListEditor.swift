@@ -25,7 +25,7 @@ struct currencyListEditor: View {
             .navigationTitle("All Currencies")
             .toolbar {
                 ToolbarItem {
-                    NewCategoryView()
+                    NewCurrencyView()
                         .padding()
                 }
             }

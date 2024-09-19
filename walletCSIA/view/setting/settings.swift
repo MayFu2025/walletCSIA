@@ -25,10 +25,10 @@ struct settings: View {
                     NavigationLink(destination: categoryListEditor()) {
                         Text("Categories")
                     }
-                    NavigationLink(destination: graphScreen()) {
+                    NavigationLink(destination: currencyListEditor()) {
                         Text("Currencies")
                     }
-                    NavigationLink(destination: graphScreen()) {
+                    NavigationLink(destination: expenseListEditor()) {
                         Text("Expenses")
                     }
                 }

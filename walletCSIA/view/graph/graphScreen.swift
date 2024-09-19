@@ -22,7 +22,7 @@ struct graphScreen: View {
                 .navigationTitle("Graph View")
                 .toolbar{
                     ToolbarItem() {
-                        NewCategoryView()
+                        Image(systemName: "calendar.badge.clock")
                         .padding()
                     }
                 }

@@ -6,13 +6,47 @@
 //
 
 import SwiftUI
+import SwiftData
 
-struct newCurrency: View {
+struct NewCurrencyView: View {
+    @Environment(\.modelContext) private var context
+    
+    @State private var currencyCode: String = ""
+    @State private var showCurrencyPopup: Bool = false
+    
+    @Query var currencies: [Currency]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+            self.currencyCode = ""
+            self.showCurrencyPopup = true
+        }) {
+            Image(systemName: "plus")
+        }
+        // Move the alert modifier outside the Button's label
+        .alert("Enter New Currency Code", isPresented: $showCurrencyPopup) {
+            TextField("3-letter ISO Currency Code", text: $currencyCode)
+            Button("Confirm") {
+                newCurrencyObject(currencyCode: currencyCode)
+            }
+            Button("Cancel", role: .cancel, action: {})
+        }
+    }
+    
+    func newCurrencyObject(currencyCode: String) {
+        let newCurrency = Currency(acronym: currencyCode)
+        context.insert(newCurrency)
+        do {
+            try context.save()
+            print("Currency saved: \(newCurrency.name)")
+        } catch {
+            print("Failed to save currency: \(error)")
+        }
     }
 }
 
 #Preview {
-    newCurrency()
+    let container = try! ModelContainer(for: Category.self)
+    return NewCurrencyView()
+        .modelContext(container.mainContext)
 }
