@@ -9,16 +9,21 @@ import SwiftUI
 import SwiftData
 
 struct settings: View {
-    var userName: String?
+//    var userName = defaults.object(forKey:"Username") as? [String] ?? [String]()
+    
     @Query var categories: [Category]
     @Query var currencies: [Currency]
     @Query var expenses: [Expense]
+    
+//    defaults.set(userName, forKey: "Username")
     
     var body: some View {
         NavigationStack{
             List{
                 Section(header: Text("User")) {
-                    Text("Bernard Lee")
+                    HStack{
+                        Text("Hold on")
+                    }
                     Text("Add toggle here to enable password/FaceID")
                 }
                 Section(header: Text("All Instances")) {

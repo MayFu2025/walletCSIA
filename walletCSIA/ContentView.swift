@@ -12,6 +12,12 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var currentTab: String = "allExpenses"
     
+    // App init.
+    let locale = Locale.current
+    @AppStorage("username") var username = ""
+    @AppStorage("usePasscode") var usePasscode = false
+    @AppStorage("useFaceID") var useFaceID = false
+    @AppStorage("systemDefaultCurrencyCode") var systemDefaultCurrency = (locale.currencyCode ?? "")
 
     var body: some View {
         TabView(selection: $currentTab) {
