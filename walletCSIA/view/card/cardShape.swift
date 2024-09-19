@@ -11,14 +11,14 @@ struct cardShape: View {
     let card_name : String
     let holder_name : String
     let providerIcon : String
-    let color1 : Color
-    let color2 : Color
+    let color1 : String
+    let color2 : String
     
     var body: some View {
         ZStack {
             // Background shape for the credit card
             RoundedRectangle(cornerRadius: 25)
-                .fill(LinearGradient(gradient: Gradient(colors: [color1, color2]), startPoint: .topLeading, endPoint: .bottomTrailing)) //Choose 2 colors
+                .fill(LinearGradient(gradient: Gradient(colors: [Color(hex: color1), Color(hex: color2)]), startPoint: .topLeading, endPoint: .bottomTrailing)) //Choose 2 colors
                 .frame(width: 300, height: 200)
                 .shadow(radius: 10)
             
@@ -61,5 +61,5 @@ struct cardShape: View {
 }
 
 #Preview {
-    cardShape(card_name: "SMBC Olive", holder_name: "May Fujita", providerIcon: "VisaIcon", color1: Color.black, color2: Color.green)
+    cardShape(card_name: "SMBC Olive", holder_name: "May Fujita", providerIcon: "VisaIcon", color1: 000000, color2: 00FF00)
 }
