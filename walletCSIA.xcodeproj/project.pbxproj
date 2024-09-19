@@ -23,6 +23,9 @@
 		27ED88472C9B2B2200D9B35B /* graphScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED88462C9B2B2200D9B35B /* graphScreen.swift */; };
 		27ED88492C9B2E3100D9B35B /* newCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED88482C9B2E3100D9B35B /* newCategory.swift */; };
 		27ED884B2C9B40DD00D9B35B /* categoryListEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED884A2C9B40DD00D9B35B /* categoryListEditor.swift */; };
+		27ED884D2C9BB86C00D9B35B /* currencyListEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED884C2C9BB86C00D9B35B /* currencyListEditor.swift */; };
+		27ED884F2C9BB87F00D9B35B /* expenseListEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED884E2C9BB87F00D9B35B /* expenseListEditor.swift */; };
+		27ED88512C9BBC0D00D9B35B /* worldCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED88502C9BBC0D00D9B35B /* worldCurrency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,9 @@
 		27ED88462C9B2B2200D9B35B /* graphScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = graphScreen.swift; sourceTree = "<group>"; };
 		27ED88482C9B2E3100D9B35B /* newCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newCategory.swift; sourceTree = "<group>"; };
 		27ED884A2C9B40DD00D9B35B /* categoryListEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoryListEditor.swift; sourceTree = "<group>"; };
+		27ED884C2C9BB86C00D9B35B /* currencyListEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = currencyListEditor.swift; sourceTree = "<group>"; };
+		27ED884E2C9BB87F00D9B35B /* expenseListEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expenseListEditor.swift; sourceTree = "<group>"; };
+		27ED88502C9BBC0D00D9B35B /* worldCurrency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = worldCurrency.swift; path = "../../../../../Downloads/4c3e6b2f027666669e8f211a1586b7fe-b8baa434c536126faf2afd3bf0f1f002294c80f7/worldCurrency.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,7 @@
 		27ED882F2C99C5F500D9B35B /* model */ = {
 			isa = PBXGroup;
 			children = (
+				27ED88502C9BBC0D00D9B35B /* worldCurrency.swift */,
 				27ED88302C99C62D00D9B35B /* creditCard.swift */,
 				27ED88322C99C63E00D9B35B /* currency.swift */,
 				27ED88342C99C65900D9B35B /* category.swift */,
@@ -120,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				27ED88462C9B2B2200D9B35B /* graphScreen.swift */,
-				27ED88482C9B2E3100D9B35B /* newCategory.swift */,
 			);
 			path = graph;
 			sourceTree = "<group>";
@@ -145,8 +151,11 @@
 		27ED883B2C99C70800D9B35B /* setting */ = {
 			isa = PBXGroup;
 			children = (
+				27ED88482C9B2E3100D9B35B /* newCategory.swift */,
 				27ED883C2C99C71600D9B35B /* settings.swift */,
 				27ED884A2C9B40DD00D9B35B /* categoryListEditor.swift */,
+				27ED884C2C9BB86C00D9B35B /* currencyListEditor.swift */,
+				27ED884E2C9BB87F00D9B35B /* expenseListEditor.swift */,
 			);
 			path = setting;
 			sourceTree = "<group>";
@@ -225,6 +234,7 @@
 				27ED88432C99C78900D9B35B /* allExpense.swift in Sources */,
 				27ED88312C99C62D00D9B35B /* creditCard.swift in Sources */,
 				27ED88352C99C65900D9B35B /* category.swift in Sources */,
+				27ED884D2C9BB86C00D9B35B /* currencyListEditor.swift in Sources */,
 				27ED883F2C99C74F00D9B35B /* allCards.swift in Sources */,
 				27ED884B2C9B40DD00D9B35B /* categoryListEditor.swift in Sources */,
 				27ED883D2C99C71600D9B35B /* settings.swift in Sources */,
@@ -233,6 +243,8 @@
 				27ED88412C99C76900D9B35B /* newExpense.swift in Sources */,
 				27ED88212C99C55800D9B35B /* ContentView.swift in Sources */,
 				27ED88232C99C55800D9B35B /* Item.swift in Sources */,
+				27ED88512C9BBC0D00D9B35B /* worldCurrency.swift in Sources */,
+				27ED884F2C9BB87F00D9B35B /* expenseListEditor.swift in Sources */,
 				27ED881F2C99C55800D9B35B /* walletCSIAApp.swift in Sources */,
 				27ED88372C99C67B00D9B35B /* expense.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  instanceListEditor.swift
+//  currencyListEditor.swift
 //  walletCSIA
 //
 //  Created by May Fujita on 2024/09/19.
@@ -8,21 +8,21 @@
 import SwiftUI
 import SwiftData
 
-struct categoryListEditor: View {
+struct currencyListEditor: View {
     @Environment(\.modelContext) private var context // Access the model context
-    @Query var categories: [Category] // Fetching categories from the model
+    @Query var currencies: [Currency] // Fetching categories from the model
     @State private var isPresentingConfirmation = false // Controls the confirmation dialog
-    @State private var categoryToDelete: Category? // Stores the category to delete
+    @State private var currencyToDelete: Currency? // Stores the category to delete
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach(categories, id: \.self) { category in
-                    Text(category.name)
+                ForEach(currencies, id: \.self) { currency in
+                    Text(currency.name)
                 }
                 .onDelete(perform: confirmDelete)
             }
-            .navigationTitle("All Categories")
+            .navigationTitle("All Currencies")
             .toolbar {
                 ToolbarItem {
                     NewCategoryView()
@@ -30,13 +30,13 @@ struct categoryListEditor: View {
                 }
             }
             .confirmationDialog(
-                "Are you sure you want to delete this category?\n(This action will also delete all expenses associated to this category!)",
+                "Are you sure you want to delete this currency?\n(This action will also delete all expenses associated to this currency!)",
                 isPresented: $isPresentingConfirmation,
                 titleVisibility: .visible
             ) {
                 Button("Delete", role: .destructive) {
-                    if let category = categoryToDelete {
-                        deleteCategory(category)
+                    if let currency = currencyToDelete {
+                        deleteCurrency(currency)
                     }
                 }
                 Button("Cancel", role: .cancel) {}
@@ -47,14 +47,14 @@ struct categoryListEditor: View {
     // Trigger the confirmation dialog
     private func confirmDelete(at offsets: IndexSet) {
         if let index = offsets.first {
-            categoryToDelete = categories[index]
+            currencyToDelete = currencies[index]
             isPresentingConfirmation = true // Show the confirmation dialog
         }
     }
     
     // Delete the category and save the context
-    private func deleteCategory(_ category: Category) {
-        context.delete(category) // Delete the category from the context
+    private func deleteCurrency(_ currency: Currency) {
+        context.delete(currency) // Delete the category from the context
         do {
             try context.save()
         } catch {
@@ -65,7 +65,6 @@ struct categoryListEditor: View {
 
 #Preview {
     let container = try! ModelContainer(for: Category.self)
-    return categoryListEditor()
+    return currencyListEditor()
         .modelContext(container.mainContext)
 }
-

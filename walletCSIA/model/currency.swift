@@ -10,16 +10,17 @@ import SwiftData
 
 @Model
 class Currency {
-    @Attribute(.unique) var name: String
     @Attribute(.unique) var acronym: String
+    var name: String
     var symbol: String
     
     @Relationship(deleteRule: .cascade, inverse: \Expense.currency)
     var expenses: [Expense]?
     
-    init(name: String, acronym: String, symbol: String) {
-        self.name = name
+    init(acronym: String) {
         self.acronym = acronym
-        self.symbol = symbol
+        let reference = worldCurrency(rawValue: acronym)
+        self.name = reference?.name ?? "Unknown"
+        self.symbol = reference?.symbol ?? "Unknown"
     }
 }
