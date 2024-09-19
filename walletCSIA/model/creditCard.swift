@@ -19,17 +19,18 @@ class creditCard {
     var cardProvider: String
     
     var defaultCurrency: Currency
-    var cashbackRate: Double?
+    var cashbackRate: Double
     
     @Relationship(deleteRule: .cascade, inverse: \Expense.card)
     var expenses: [Expense]?
     
-    init(name: String, holder: String, color1: Color, color2: Color, cardProvider: String, defaultCurrency: Currency) {
+    init(name: String, holder: String, color1: Color, color2: Color, cardProvider: String, defaultCurrency: Currency, cashbackRate: Double) {
         self.name = name
         self.holder = holder
         self.color1 =  color1.asRGB()
         self.color2 = color2.asRGB()
         self.cardProvider = cardProvider
         self.defaultCurrency = defaultCurrency
+        self.cashbackRate = cashbackRate
     }
 }

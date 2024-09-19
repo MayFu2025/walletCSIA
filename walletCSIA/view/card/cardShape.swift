@@ -53,8 +53,8 @@ struct cardShape: View {
                     Spacer()
                 }
             }
-            .padding(.horizontal, 45)
-            .padding(.vertical, 30)
+            .padding(.horizontal, 45)  //These paddings probably need to be relative
+            .padding(.vertical, 30) //These paddings probably need to be relative
         }
         .padding()
     }
