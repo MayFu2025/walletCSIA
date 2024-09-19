@@ -22,7 +22,7 @@
 		27ED88432C99C78900D9B35B /* allExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED88422C99C78900D9B35B /* allExpense.swift */; };
 		27ED88472C9B2B2200D9B35B /* graphScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED88462C9B2B2200D9B35B /* graphScreen.swift */; };
 		27ED88492C9B2E3100D9B35B /* newCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED88482C9B2E3100D9B35B /* newCategory.swift */; };
-		27ED884B2C9B40DD00D9B35B /* instanceListEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED884A2C9B40DD00D9B35B /* instanceListEditor.swift */; };
+		27ED884B2C9B40DD00D9B35B /* categoryListEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED884A2C9B40DD00D9B35B /* categoryListEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +42,7 @@
 		27ED88422C99C78900D9B35B /* allExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allExpense.swift; sourceTree = "<group>"; };
 		27ED88462C9B2B2200D9B35B /* graphScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = graphScreen.swift; sourceTree = "<group>"; };
 		27ED88482C9B2E3100D9B35B /* newCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newCategory.swift; sourceTree = "<group>"; };
-		27ED884A2C9B40DD00D9B35B /* instanceListEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = instanceListEditor.swift; sourceTree = "<group>"; };
+		27ED884A2C9B40DD00D9B35B /* categoryListEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoryListEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				27ED883C2C99C71600D9B35B /* settings.swift */,
-				27ED884A2C9B40DD00D9B35B /* instanceListEditor.swift */,
+				27ED884A2C9B40DD00D9B35B /* categoryListEditor.swift */,
 			);
 			path = setting;
 			sourceTree = "<group>";
@@ -226,7 +226,7 @@
 				27ED88312C99C62D00D9B35B /* creditCard.swift in Sources */,
 				27ED88352C99C65900D9B35B /* category.swift in Sources */,
 				27ED883F2C99C74F00D9B35B /* allCards.swift in Sources */,
-				27ED884B2C9B40DD00D9B35B /* instanceListEditor.swift in Sources */,
+				27ED884B2C9B40DD00D9B35B /* categoryListEditor.swift in Sources */,
 				27ED883D2C99C71600D9B35B /* settings.swift in Sources */,
 				27ED88332C99C63E00D9B35B /* currency.swift in Sources */,
 				27ED88472C9B2B2200D9B35B /* graphScreen.swift in Sources */,

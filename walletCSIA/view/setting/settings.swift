@@ -22,7 +22,7 @@ struct settings: View {
                     Text("Add toggle here to enable password/FaceID")
                 }
                 Section(header: Text("All Instances")) {
-                    NavigationLink(destination: graphScreen()) {
+                    NavigationLink(destination: categoryListEditor()) {
                         Text("Categories")
                     }
                     NavigationLink(destination: graphScreen()) {
