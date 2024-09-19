@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct cardShape: View {
-    let card_name : String
-    let holder_name : String
+    let cardName : String
+    let holderName : String
     let providerIcon : String
-    let color1 : String
-    let color2 : String
+    let color1 : [Double]
+    let color2 : [Double]
     
     var body: some View {
         ZStack {
             // Background shape for the credit card
             RoundedRectangle(cornerRadius: 25)
-                .fill(LinearGradient(gradient: Gradient(colors: [Color(hex: color1), Color(hex: color2)]), startPoint: .topLeading, endPoint: .bottomTrailing)) //Choose 2 colors
+                .fill(LinearGradient(gradient: Gradient(colors: [extractSwiftUIColor(RGB: color1), extractSwiftUIColor(RGB: color2)]), startPoint: .topLeading, endPoint: .bottomTrailing)) //Choose 2 colors
                 .frame(width: 300, height: 200)
                 .shadow(radius: 10)
             
@@ -33,7 +33,7 @@ struct cardShape: View {
                         .foregroundColor(.white)
                 }
                 
-                Text(card_name)  // Change to custom name
+                Text(cardName)  // Change to custom name
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
@@ -45,7 +45,7 @@ struct cardShape: View {
                             .font(.caption)
                             .foregroundColor(.white)
                         
-                        Text(holder_name)  // Change to user name
+                        Text(holderName)  // Change to user name
                             .font(.headline)
                             .foregroundColor(.white)
                     }
@@ -61,5 +61,5 @@ struct cardShape: View {
 }
 
 #Preview {
-    cardShape(card_name: "SMBC Olive", holder_name: "May Fujita", providerIcon: "VisaIcon", color1: 000000, color2: 00FF00)
+    cardShape(cardName: "SMBC Olive", holderName: "May Fujita", providerIcon: "VisaIcon", color1: Color.red.asRGB(), color2: Color.blue.asRGB())
 }

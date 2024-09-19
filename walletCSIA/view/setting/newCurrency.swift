@@ -12,6 +12,7 @@ struct NewCurrencyView: View {
     @Environment(\.modelContext) private var context
     
     @State private var currencyCode: String = ""
+    @State private var isDefaultCurrency: Bool = false
     @State private var showCurrencyPopup: Bool = false
     
     @Query var currencies: [Currency]
@@ -27,14 +28,15 @@ struct NewCurrencyView: View {
         .alert("Enter New Currency Code", isPresented: $showCurrencyPopup) {
             TextField("3-letter ISO Currency Code", text: $currencyCode)
             Button("Confirm") {
-                newCurrencyObject(currencyCode: currencyCode)
+                isDefaultCurrency = checkIfDefault(currencies: currencies)
+                newCurrencyObject(currencyCode: currencyCode, isDefaultCurrency: isDefaultCurrency)
             }
             Button("Cancel", role: .cancel, action: {})
         }
     }
     
-    func newCurrencyObject(currencyCode: String) {
-        let newCurrency = Currency(acronym: currencyCode)
+    func newCurrencyObject(currencyCode: String, isDefaultCurrency: Bool) {
+        let newCurrency = Currency(acronym: currencyCode, isDefaultCurrency: isDefaultCurrency)
         context.insert(newCurrency)
         do {
             try context.save()
@@ -42,6 +44,14 @@ struct NewCurrencyView: View {
         } catch {
             print("Failed to save currency: \(error)")
         }
+    }
+    
+    func checkIfDefault(currencies: [Currency]) -> Bool {
+        var output = false
+        if currencies.isEmpty {
+            output = true
+        }
+        return output
     }
 }
 

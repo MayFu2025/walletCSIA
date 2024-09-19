@@ -7,14 +7,15 @@
 
 import Foundation
 import SwiftData
+import SwiftUI
 
 @Model
 class creditCard {
     @Attribute(.unique) var name: String
     var holder: String
     
-    var color1: String
-    var color2: String
+    var color1: [Double]
+    var color2: [Double]
     var cardProvider: String
     
     var defaultCurrency: Currency
@@ -23,11 +24,11 @@ class creditCard {
     @Relationship(deleteRule: .cascade, inverse: \Expense.card)
     var expenses: [Expense]?
     
-    init(name: String, holder: String, color1: String, color2: String, cardProvider: String, defaultCurrency: Currency) {
+    init(name: String, holder: String, color1: Color, color2: Color, cardProvider: String, defaultCurrency: Currency) {
         self.name = name
         self.holder = holder
-        self.color1 =  color1
-        self.color2 = color2
+        self.color1 =  color1.asRGB()
+        self.color2 = color2.asRGB()
         self.cardProvider = cardProvider
         self.defaultCurrency = defaultCurrency
     }

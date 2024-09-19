@@ -29,7 +29,7 @@
 		27ED88572C9BD75200D9B35B /* newCardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED88562C9BD75200D9B35B /* newCardSheet.swift */; };
 		27ED88592C9BD7D500D9B35B /* cardShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED88582C9BD7D500D9B35B /* cardShape.swift */; };
 		27ED885B2C9C207200D9B35B /* creditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED885A2C9C207200D9B35B /* creditCard.swift */; };
-		27ED885D2C9C21FA00D9B35B /* stringToColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED885C2C9C21FA00D9B35B /* stringToColor.swift */; };
+		27ED885D2C9C21FA00D9B35B /* colorToDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED885C2C9C21FA00D9B35B /* colorToDoubles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +56,7 @@
 		27ED88562C9BD75200D9B35B /* newCardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newCardSheet.swift; sourceTree = "<group>"; };
 		27ED88582C9BD7D500D9B35B /* cardShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cardShape.swift; sourceTree = "<group>"; };
 		27ED885A2C9C207200D9B35B /* creditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = creditCard.swift; sourceTree = "<group>"; };
-		27ED885C2C9C21FA00D9B35B /* stringToColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stringToColor.swift; sourceTree = "<group>"; };
+		27ED885C2C9C21FA00D9B35B /* colorToDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colorToDoubles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +127,7 @@
 				27ED88342C99C65900D9B35B /* category.swift */,
 				27ED88362C99C67B00D9B35B /* expense.swift */,
 				27ED885A2C9C207200D9B35B /* creditCard.swift */,
-				27ED885C2C9C21FA00D9B35B /* stringToColor.swift */,
+				27ED885C2C9C21FA00D9B35B /* colorToDoubles.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -253,7 +253,7 @@
 				27ED88592C9BD7D500D9B35B /* cardShape.swift in Sources */,
 				27ED88472C9B2B2200D9B35B /* graphScreen.swift in Sources */,
 				27ED88572C9BD75200D9B35B /* newCardSheet.swift in Sources */,
-				27ED885D2C9C21FA00D9B35B /* stringToColor.swift in Sources */,
+				27ED885D2C9C21FA00D9B35B /* colorToDoubles.swift in Sources */,
 				27ED88412C99C76900D9B35B /* newExpense.swift in Sources */,
 				27ED88212C99C55800D9B35B /* ContentView.swift in Sources */,
 				27ED88232C99C55800D9B35B /* Item.swift in Sources */,
