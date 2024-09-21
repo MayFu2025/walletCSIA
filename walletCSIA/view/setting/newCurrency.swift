@@ -12,7 +12,7 @@ struct NewCurrencyView: View {
     @Environment(\.modelContext) private var context
     
     @State private var currencyCode: String = ""
-    @State private var isDefaultCurrency: Bool = false
+    @State private var isDefault: Bool = false
     @State private var showCurrencyPopup: Bool = false
     
     @Query var currencies: [Currency]
@@ -28,15 +28,15 @@ struct NewCurrencyView: View {
         .alert("Enter New Currency Code", isPresented: $showCurrencyPopup) {
             TextField("3-letter ISO Currency Code", text: $currencyCode)
             Button("Confirm") {
-                isDefaultCurrency = checkIfDefault(currencies: currencies)
-                newCurrencyObject(currencyCode: currencyCode, isDefaultCurrency: isDefaultCurrency)
+                isDefault = checkIfDefault(currencies: currencies)
+                newCurrencyObject(currencyCode: currencyCode, isDefault: isDefault)
             }
             Button("Cancel", role: .cancel, action: {})
         }
     }
     
-    func newCurrencyObject(currencyCode: String, isDefaultCurrency: Bool) {
-        let newCurrency = Currency(acronym: currencyCode, isDefaultCurrency: isDefaultCurrency)
+    func newCurrencyObject(currencyCode: String, isDefault: Bool) {
+        let newCurrency = Currency(acronym: currencyCode, isDefault: isDefault)
         context.insert(newCurrency)
         do {
             try context.save()

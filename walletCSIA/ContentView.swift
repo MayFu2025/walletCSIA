@@ -22,10 +22,10 @@ struct ContentView: View {
         @AppStorage("useFaceID") var useFaceID = false
         @AppStorage("localDefaultCurrencyCode") var localDefaultCurrencyCode = locale.currency!.identifier
         
-        let systemDefaultCurrency = Currency(acronym: locale.currency!.identifier, isDefaultCurrency: true)
+        let systemDefaultCurrency = Currency(acronym: locale.currency!.identifier, isDefault: true)
         context.insert(systemDefaultCurrency)
         
-        let unclassifiedCategory = Category(name: "Unclassified")
+        let unclassifiedCategory = Category(name: "Unclassified", isDefault: true)
         context.insert(unclassifiedCategory)
     }
     

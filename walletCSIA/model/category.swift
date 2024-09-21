@@ -11,11 +11,13 @@ import SwiftData
 @Model
 class Category {
     @Attribute(.unique) var name: String
+    var isDefault: Bool
     
     @Relationship(deleteRule: .cascade, inverse: \Expense.category)
     var expenses: [Expense]?
     
-    init(name: String) {
+    init(name: String, isDefault: Bool) {
         self.name = name
+        self.isDefault = isDefault
     }
 }

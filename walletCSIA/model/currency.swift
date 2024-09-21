@@ -13,17 +13,17 @@ class Currency {
     @Attribute(.unique) var acronym: String
     var name: String
     var symbol: String
-    var isDefaultCurrency: Bool
+    var isDefault: Bool
     
     @Relationship(deleteRule: .cascade, inverse: \Expense.currency)
     var expenses: [Expense]?
     
-    init(acronym: String, isDefaultCurrency: Bool) {
+    init(acronym: String, isDefault: Bool) {
         self.acronym = acronym
         let reference = worldCurrency(rawValue: acronym)
         self.name = reference?.name ?? "Unknown"
         self.symbol = reference?.symbol ?? "Unknown"
         
-        self.isDefaultCurrency = isDefaultCurrency
+        self.isDefault = isDefault
     }
 }

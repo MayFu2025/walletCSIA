@@ -20,7 +20,7 @@ struct newCardSheet: View {
     @State private var color1: Color = Color.gray
     @State private var color2: Color = Color.black
     
-    @State private var defaultCurrency: Currency = Currency(acronym: "HKD", isDefaultCurrency: false)  // TODO: Fix later
+    @State private var defaultCurrency: Currency = Currency(acronym: "HKD", isDefault: false)  // TODO: Fix later
     @State private var cashbackRate: Double = 0.00
     
     

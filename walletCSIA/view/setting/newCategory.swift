@@ -27,14 +27,14 @@ struct NewCategoryView: View {
         .alert("Enter New Category Name", isPresented: $showCategoryPopup) {
             TextField("Category Name", text: $categoryName)
             Button("Confirm") {
-                newCategoryObject(categoryName: categoryName)
+                newCategoryObject(categoryName: categoryName, isDefault: true)
             }
             Button("Cancel", role: .cancel, action: {})
         }
     }
     
-    func newCategoryObject(categoryName: String) {
-        let newCategory = Category(name: categoryName)
+    func newCategoryObject(categoryName: String, isDefault: Bool) {
+        let newCategory = Category(name: categoryName, isDefault: isDefault)
         context.insert(newCategory)
         do {
             try context.save()
