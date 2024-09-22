@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270142D82CA0905B00BD1D0C /* expenseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270142D72CA0905B00BD1D0C /* expenseRow.swift */; };
 		27ED881F2C99C55800D9B35B /* walletCSIAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED881E2C99C55800D9B35B /* walletCSIAApp.swift */; };
 		27ED88212C99C55800D9B35B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED88202C99C55800D9B35B /* ContentView.swift */; };
 		27ED88232C99C55800D9B35B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED88222C99C55800D9B35B /* Item.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		270142D72CA0905B00BD1D0C /* expenseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expenseRow.swift; sourceTree = "<group>"; };
 		27ED881B2C99C55800D9B35B /* walletCSIA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = walletCSIA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ED881E2C99C55800D9B35B /* walletCSIAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = walletCSIAApp.swift; sourceTree = "<group>"; };
 		27ED88202C99C55800D9B35B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				27ED88402C99C76900D9B35B /* newExpenseOld.swift */,
 				27ED88422C99C78900D9B35B /* allExpense.swift */,
 				27ED88622C9D5A6400D9B35B /* newExpense.swift */,
+				270142D72CA0905B00BD1D0C /* expenseRow.swift */,
 			);
 			path = expense;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				27ED88332C99C63E00D9B35B /* currency.swift in Sources */,
 				27ED88592C9BD7D500D9B35B /* cardShape.swift in Sources */,
 				27ED88472C9B2B2200D9B35B /* graphScreen.swift in Sources */,
+				270142D82CA0905B00BD1D0C /* expenseRow.swift in Sources */,
 				27ED88572C9BD75200D9B35B /* newCardSheet.swift in Sources */,
 				27ED885D2C9C21FA00D9B35B /* colorToDoubles.swift in Sources */,
 				27ED88412C99C76900D9B35B /* newExpenseOld.swift in Sources */,

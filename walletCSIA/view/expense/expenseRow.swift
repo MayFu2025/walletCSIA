@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct expenseRow: View {
+    private var expense = Expense?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.white)
+                .shadow(radius: 5)
+                .frame(width: 350, height: 100)
+            VStack{
+                Text("Date of Expense here")
+            }
+        }
     }
 }
 

@@ -20,6 +20,7 @@ struct newExpense: View {
     @State private var date: Date = .init()
     @State private var note: String = ""
     
+    
     func addExpense(amount: Double, currency: Currency, card: creditCard, category: Category, date: Date, note: String) {
         let newExpense = Expense(amount: amount, date: date, category: category, card: card, currency: currency, note: note)
         context.insert(newExpense)

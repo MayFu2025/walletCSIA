@@ -14,7 +14,7 @@ struct allExpense: View {
     
     var body: some View {
         NavigationStack{
-            Text("This is all expenses screen")
+            Text("")
                 .navigationTitle("Past Expenses")
         }
     }
