@@ -14,20 +14,20 @@ struct ContentView: View {
     @State private var currentTab: String = "allExpenses"
     
     // App init.
-    init(locale: Foundation.Locale = Locale.current) {
-        self.locale = locale
-            
-        @AppStorage("username") var username = ""
-        @AppStorage("usePasscode") var usePasscode = false
-        @AppStorage("useFaceID") var useFaceID = false
-        @AppStorage("localDefaultCurrencyCode") var localDefaultCurrencyCode = locale.currency!.identifier
-        
-        let systemDefaultCurrency = Currency(acronym: locale.currency!.identifier, isDefault: true)
-        context.insert(systemDefaultCurrency)
-        
-        let unclassifiedCategory = Category(name: "Unclassified", isDefault: true)
-        context.insert(unclassifiedCategory)
-    }
+//    init(locale: Foundation.Locale = Locale.current) {
+//        self.locale = locale
+//            
+//        @AppStorage("username") var username = ""
+//        @AppStorage("usePasscode") var usePasscode = false
+//        @AppStorage("useFaceID") var useFaceID = false
+//        @AppStorage("localDefaultCurrencyCode") var localDefaultCurrencyCode = locale.currency!.identifier
+//        
+//        let systemDefaultCurrency = Currency(acronym: locale.currency!.identifier, isDefault: true)
+//        context.insert(systemDefaultCurrency)
+//        
+//        let unclassifiedCategory = Category(name: "Unclassified", isDefault: true)
+//        context.insert(unclassifiedCategory)
+//    }
     
 
     var body: some View {

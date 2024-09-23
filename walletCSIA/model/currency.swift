@@ -26,4 +26,8 @@ class Currency {
         
         self.isDefault = isDefault
     }
+    
+//    func toggleIsDefault() {
+//        self.isDefault.toggle()
+//    }
 }

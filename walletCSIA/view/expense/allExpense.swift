@@ -9,11 +9,14 @@ import SwiftUI
 import SwiftData
 
 struct allExpense: View {
-    @Environment(\.modelContext) var modelContext
     @Query var expenses: [Expense]
+    @Environment(\.modelContext) var modelContext
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
+            ForEach(expenses) { expense in
+                expenseRow(expense: expense)
+            }
             Text("")
                 .navigationTitle("Past Expenses")
         }

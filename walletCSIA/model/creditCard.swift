@@ -33,4 +33,34 @@ class creditCard {
         self.defaultCurrency = defaultCurrency
         self.cashbackRate = cashbackRate
     }
+    
+    
+    func expensesInCategory(category: Category) -> [Expense] {
+            // Ensure expenses exist
+            guard let expenses = expenses else { return [] }
+            
+            // Filter expenses by the given category
+            return expenses.filter { $0.category == category }
+    }
+    func groupExpensesByDate() -> [[Expense]] {
+        // Ensure expenses exist
+        guard let expenses = expenses else { return [] }
+        // Create a DateFormatter
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd" // Format date to only include year, month, and day
+        // Dictionary to hold grouped expenses
+        var groupedExpenses = [String: [Expense]]()
+        // Group expenses by date (normalized as a string)
+        for expense in expenses {
+            let dateKey = dateFormatter.string(from: expense.date)
+            if groupedExpenses[dateKey] != nil {
+                groupedExpenses[dateKey]?.append(expense)
+            } else {
+                groupedExpenses[dateKey] = [expense]
+            }
+        }   
+        // Sort the dates and return arrays of expenses sorted by date
+        let sortedKeys = groupedExpenses.keys.sorted()
+        return sortedKeys.compactMap { groupedExpenses[$0] }
+        }
 }
