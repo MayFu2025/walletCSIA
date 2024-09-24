@@ -19,23 +19,26 @@ struct expenseRow: View {
             return formatter
         }()
     
-    var body: some View { //TODO: this ugly asf
+    var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
                 .shadow(radius: 5)
                 .frame(width: 350, height: 100)
+                .padding()
             
-            VStack{
-                Text(dateFormatter.string(from: expense.date))
-                    .font(.footnote)
+            HStack{
+                VStack{
+                    Text("\(dateFormatter.string(from: expense.date))\n\(expense.category.name)")
+                        .font(.title3)
+                }
                 HStack{
                     Text(expense.currency.symbol)
-                        .font(.largeTitle)
+                        .font(.title2)
                     Text(String(expense.amount))
                         .font(.largeTitle)
                 }
-                Text(expense.category.name)
+                
             }
         }
     }

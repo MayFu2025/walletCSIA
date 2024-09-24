@@ -42,6 +42,7 @@ class creditCard {
             // Filter expenses by the given category
             return expenses.filter { $0.category == category }
     }
+    
     func groupExpensesByDate() -> [[Expense]] {
         // Ensure expenses exist
         guard let expenses = expenses else { return [] }

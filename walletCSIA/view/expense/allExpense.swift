@@ -14,8 +14,10 @@ struct allExpense: View {
     
     var body: some View {
         NavigationStack {
-            ForEach(expenses) { expense in
-                expenseRow(expense: expense)
+            ScrollView{
+                ForEach(expenses) { expense in
+                    expenseRow(expense: expense)
+                }
             }
             Text("")
                 .navigationTitle("Past Expenses")

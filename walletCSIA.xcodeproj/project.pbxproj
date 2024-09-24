@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		270142D82CA0905B00BD1D0C /* expenseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270142D72CA0905B00BD1D0C /* expenseRow.swift */; };
+		271A5F012CA2FA42006C9CD0 /* dateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A5F002CA2FA42006C9CD0 /* dateHandler.swift */; };
 		27ED881F2C99C55800D9B35B /* walletCSIAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED881E2C99C55800D9B35B /* walletCSIAApp.swift */; };
 		27ED88212C99C55800D9B35B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED88202C99C55800D9B35B /* ContentView.swift */; };
 		27ED88232C99C55800D9B35B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED88222C99C55800D9B35B /* Item.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		270142D72CA0905B00BD1D0C /* expenseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expenseRow.swift; sourceTree = "<group>"; };
+		271A5F002CA2FA42006C9CD0 /* dateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateHandler.swift; sourceTree = "<group>"; };
 		27ED881B2C99C55800D9B35B /* walletCSIA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = walletCSIA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ED881E2C99C55800D9B35B /* walletCSIAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = walletCSIAApp.swift; sourceTree = "<group>"; };
 		27ED88202C99C55800D9B35B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				27ED885A2C9C207200D9B35B /* creditCard.swift */,
 				27ED885C2C9C21FA00D9B35B /* colorToDoubles.swift */,
 				27ED885E2C9C7FE600D9B35B /* logoIcons.swift */,
+				271A5F002CA2FA42006C9CD0 /* dateHandler.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				27ED88512C9BBC0D00D9B35B /* worldCurrency.swift in Sources */,
 				27ED884F2C9BB87F00D9B35B /* expenseListEditor.swift in Sources */,
 				27ED885B2C9C207200D9B35B /* creditCard.swift in Sources */,
+				271A5F012CA2FA42006C9CD0 /* dateHandler.swift in Sources */,
 				27ED881F2C99C55800D9B35B /* walletCSIAApp.swift in Sources */,
 				27ED88372C99C67B00D9B35B /* expense.swift in Sources */,
 				27ED88532C9BD32B00D9B35B /* newCurrency.swift in Sources */,
