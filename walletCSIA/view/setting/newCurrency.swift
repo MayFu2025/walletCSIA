@@ -24,7 +24,7 @@ struct NewCurrencyView: View {
         }) {
             Image(systemName: "plus")
         }
-        // Move the alert modifier outside the Button's label
+        // Move the alert modifier outside the Button's label TODO: instead of entering textfield, use enum picker
         .alert("Enter New Currency Code", isPresented: $showCurrencyPopup) {
             TextField("3-letter ISO Currency Code", text: $currencyCode)
             Button("Confirm") {

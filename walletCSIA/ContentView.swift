@@ -12,23 +12,7 @@ struct ContentView: View {
     var locale = Locale.current
     @Environment(\.modelContext) private var context
     @State private var currentTab: String = "allExpenses"
-    
-    // App init.
-//    init(locale: Foundation.Locale = Locale.current) {
-//        self.locale = locale
-//            
-//        @AppStorage("username") var username = ""
-//        @AppStorage("usePasscode") var usePasscode = false
-//        @AppStorage("useFaceID") var useFaceID = false
-//        @AppStorage("localDefaultCurrencyCode") var localDefaultCurrencyCode = locale.currency!.identifier
-//        
-//        let systemDefaultCurrency = Currency(acronym: locale.currency!.identifier, isDefault: true)
-//        context.insert(systemDefaultCurrency)
-//        
-//        let unclassifiedCategory = Category(name: "Unclassified", isDefault: true)
-//        context.insert(unclassifiedCategory)
-//    }
-    
+    @State private var showFirstLaunch: Bool = false
 
     var body: some View {
         TabView(selection: $currentTab) {
@@ -57,8 +41,14 @@ struct ContentView: View {
             }
             .tag("settings")
         }
+        .onAppear{
+            showFirstLaunch = returnCheckFirstLaunch()
+        }
+        .sheet(isPresented: $showFirstLaunch) {
+                uponFirstLaunch()}
     }
 }
+    
 
 #Preview {
     ContentView()

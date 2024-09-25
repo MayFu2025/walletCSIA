@@ -9,8 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct allExpense: View {
-    @Query var expenses: [Expense]
     @Environment(\.modelContext) var modelContext
+    @Query var expenses: [Expense]
+    
+//    var groupedTransactions: Dictionary<String, Any> { Dictionary(grouping: expenses, by: { dateFormatter.string(from: $0.date) }) }
     
     var body: some View {
         NavigationStack {
