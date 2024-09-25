@@ -24,15 +24,18 @@ struct monthGraph: View {
     
     var body: some View {
         NavigationStack {
-                Chart {
-                    ForEach (Array(monthExpenseTotals.keys), id: \.self) { key in
-                        SectorMark(
-                            angle: .value(key.name, monthExpenseTotals[key]!),
-                            angularInset: 2.0
-                        )
-                    }
+            Chart {
+                ForEach(Array(monthExpenseTotals.keys), id: \.self) { key in
+                    SectorMark(
+                        angle: .value(key.name, monthExpenseTotals[key] ?? 0),
+                        innerRadius: .ratio(0.65),
+                        angularInset: 2.0
+                    )
+                    .foregroundStyle(by: .value("Category", key.name))
+                    .cornerRadius(10.0)
                 }
-                .frame(height: 500)
             }
+            .frame(width: 300, height: 300)
         }
     }
+}

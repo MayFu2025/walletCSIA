@@ -16,11 +16,17 @@ struct expenseListEditor: View {
     @State private var isPresentingConfirmation = false
     @State private var expenseToDelete: Expense?
     
+    private let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            return formatter
+    }()
+    
     var body: some View {
         NavigationStack {
             List {
                 ForEach(expenses, id: \.self) { expense in
-                    Text(expense.note)
+                    Text("\(dateFormatter.string(from: expense.date)) (\(expense.amount))")
                 }
                 .onDelete(perform: confirmDelete)
             }

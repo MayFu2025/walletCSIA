@@ -20,6 +20,8 @@ struct newExpense: View {
     @State private var date: Date = .init()
     @State private var note: String = ""
     
+    @State private var showSuccessful: Bool = false
+    
     
     func addExpense(amount: Double, currency: Currency, card: creditCard, category: Category, date: Date, note: String) {
         let newExpense = Expense(amount: amount, date: date, category: category, card: card, currency: currency, note: note)
@@ -78,37 +80,43 @@ struct newExpense: View {
                 Section("Add Expense"){
                     Button("Submit", action: {
                         addExpense(amount: amount, currency: currency!, card: card!, category: category!, date: date, note: note)
+                        amount = 0.0
+                        note = ""
+                        showSuccessful = true
                     })
                     .disabled(amount.isZero)
                 }
-            }
-            .navigationTitle("Log New Expense")
-            .onAppear {
-                // Set default values once the data is fetched because you cannot initialize these values at the same time as all the other variables
-                if currency == nil {
-                    currency = currencies.first(where: { $0.isDefault })
+                .alert("Successfully Added Expense!", isPresented: $showSuccessful) {
+                    Button("Dismiss", role: .cancel, action: {})
                 }
-                if card == nil {
-                    card = creditCards.first
-                }
-                if category == nil {
-                    category = categories.first(where: { $0.isDefault })
+                .navigationTitle("Log New Expense")
+                .onAppear {
+                    // Set default values once the data is fetched because you cannot initialize these values at the same time as all the other variables
+                    if currency == nil {
+                        currency = currencies.first(where: { $0.isDefault })
+                    }
+                    if card == nil {
+                        card = creditCards.first
+                    }
+                    if category == nil {
+                        category = categories.first(where: { $0.isDefault })
+                    }
                 }
             }
         }
     }
 }
-
+        
 #Preview {
     let container = try! ModelContainer(for: Currency.self, creditCard.self, Category.self, Expense.self)
-
+    
     // Create default entities
     let defaultCurrency = Currency(acronym: "JPY", isDefault: true)
     let testCurrency = Currency(acronym: "HKD", isDefault: false)
     let defaultCreditCard = creditCard(name: "Test", holder: "May Fu", color1: Color.red, color2: Color.blue, cardProvider: "MasterCardIcon", defaultCurrency: defaultCurrency, cashbackRate: 0.05)
     let defaultCategory = Category(name: "Uncategorized", isDefault: true)
     let testCategory = Category(name: "Test Category", isDefault: false)
-
+    
     // Insert default entities into the context
     let context = container.mainContext
     context.insert(testCategory)
