@@ -24,7 +24,7 @@ struct newExpense: View {
     
     
     func addExpense(amount: Double, currency: Currency, card: creditCard, category: Category, date: Date, note: String) {
-        let newExpense = Expense(amount: amount, date: date, category: category, card: card, currency: currency, note: note)
+        let newExpense = Expense(amount: amount, ajustedAmount: exchangeHandler.getExchangedValue(<#T##self: exchangeHandler##exchangeHandler#>), date: date, category: category, card: card, currency: currency, note: note)
         context.insert(newExpense)
         do {
             try context.save()

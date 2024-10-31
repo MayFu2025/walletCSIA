@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct graphScreen: View {
+    
     var body: some View {
         NavigationStack {
             monthGraph()

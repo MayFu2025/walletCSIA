@@ -53,3 +53,7 @@ func totalsByCategory(expensesSorted: Dictionary<Category, [Expense]>) -> Dictio
     }
     return totalsDictionary
 }
+
+func sortByDate(expenseList: [Expense]) -> Dictionary<Date, [Expense]> {
+    return Dictionary(grouping: expenseList, by: {$0.date})
+}

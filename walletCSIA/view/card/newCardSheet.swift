@@ -59,7 +59,7 @@ struct newCardSheet: View {
                                 Spacer()
                                 Text(currency.symbol)
                             }
-                            .tag(currency.acronym)
+                            .tag(currency)
                         }
                     }
                     .pickerStyle(.menu)

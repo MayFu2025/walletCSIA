@@ -15,11 +15,25 @@ struct monthGraph: View {
     @State var isPresenting: Bool = false
     @Query var categories: [Category]
     @Query var expenses: [Expense]
+    @Query var currencies: [Currency]
+    
+    @State private var clickedAngle: Double?
+    
     var monthExpenses: Dictionary<Category, [Expense]> {
         sortByCategory(expenseList: sortThisMonth(expenses: expenses))
     }
     var monthExpenseTotals: Dictionary<Category, Double> {
         totalsByCategory(expensesSorted: monthExpenses)
+    }
+    
+    var monthSum : Double {
+        var thisMonth = sortThisMonth(expenses: expenses)
+        var amounts = thisMonth.map { $0.amount }
+        return amounts.reduce(0, +)
+    }
+    
+    var defaultCurrency: Currency {
+        currencies.first(where: {$0.isDefault})!
     }
     
     var body: some View {
@@ -35,7 +49,20 @@ struct monthGraph: View {
                     .cornerRadius(10.0)
                 }
             }
+            .chartAngleSelection(value: $clickedAngle)
             .frame(width: 300, height: 300)
+            .chartBackground { chartProxy in
+              GeometryReader { geometry in
+                if let anchor = chartProxy.plotFrame {
+                  let frame = geometry[anchor]
+                    VStack{
+                        Text("\(currentDate.monthName()) by Category")
+                        Text("\(defaultCurrency.symbol)\(monthSum)")
+                    }
+                    .position(x: frame.midX, y: frame.midY)
+                }
+              }
+            }
         }
     }
 }
