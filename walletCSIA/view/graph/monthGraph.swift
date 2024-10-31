@@ -28,7 +28,7 @@ struct monthGraph: View {
     
     var monthSum : Double {
         let thisMonth = sortThisMonth(expenses: expenses)
-        let amounts = thisMonth.map { $0.amount }
+        let amounts = thisMonth.map { $0.adjustedAmount }
         return amounts.reduce(0, +)
     }
     

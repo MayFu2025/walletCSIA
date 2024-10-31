@@ -12,6 +12,8 @@ struct allExpense: View {
     @Environment(\.modelContext) var modelContext
     @Query var expenses: [Expense]
     
+    var byDate: Dictionary<Date, [Expense]> {sortByDate(expenseList: expenses)}
+    
 //    var groupedTransactions: Dictionary<String, Any> { Dictionary(grouping: expenses, by: { dateFormatter.string(from: $0.date) }) }
     
     var body: some View {
