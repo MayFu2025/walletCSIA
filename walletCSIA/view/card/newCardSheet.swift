@@ -19,8 +19,7 @@ struct newCardSheet: View {
     @State private var providerIcon: String = "None"
     @State private var color1: Color = Color.gray
     @State private var color2: Color = Color.black
-    
-    @State private var defaultCurrency: Currency = Currency(acronym: "HKD", isDefault: false)  // TODO: Fix later
+    @State private var defaultCurrency: Currency?
     @State private var cashbackRate: Double = 0.00
     
     
@@ -59,7 +58,7 @@ struct newCardSheet: View {
                                 Spacer()
                                 Text(currency.symbol)
                             }
-                            .tag(currency)
+                            .tag(currency as Currency?)
                         }
                     }
                     .pickerStyle(.menu)
@@ -67,6 +66,11 @@ struct newCardSheet: View {
                 Section("Cashback Rate (Percent)") {
                     TextField("Enter card cashback rate",value:$cashbackRate,format: .percent)
                         .keyboardType(.decimalPad)
+                }
+            }
+            .onAppear {
+                if defaultCurrency == nil {
+                    defaultCurrency = currencies.first(where: { $0.isDefault })
                 }
             }
             .navigationTitle("Create New Card")
@@ -85,7 +89,7 @@ struct newCardSheet: View {
     }
     
     func addCard() {
-        let newCard = creditCard(name: cardName, holder: holderName, color1: color1, color2: color2, cardProvider: providerIcon, defaultCurrency: defaultCurrency, cashbackRate: cashbackRate)
+        let newCard = creditCard(name: cardName, holder: holderName, color1: color1, color2: color2, cardProvider: providerIcon, defaultCurrency: defaultCurrency!, cashbackRate: cashbackRate)
         context.insert(newCard)
         do {
             try context.save()

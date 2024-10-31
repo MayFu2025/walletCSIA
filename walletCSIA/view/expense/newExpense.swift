@@ -20,11 +20,18 @@ struct newExpense: View {
     @State private var date: Date = .init()
     @State private var note: String = ""
     
+//    @State private var amountFormat: FloatingPointFormatStyle<Double>.Currency = .currency(code: "USD")
+    
     @State private var showSuccessful: Bool = false
     
     
-    func addExpense(amount: Double, currency: Currency, card: creditCard, category: Category, date: Date, note: String) {
-        let newExpense = Expense(amount: amount, ajustedAmount: exchangeHandler.getExchangedValue(<#T##self: exchangeHandler##exchangeHandler#>), date: date, category: category, card: card, currency: currency, note: note)
+    func addExpense(amount: Double, currency: Currency, card: creditCard, category: Category, date: Date, note: String) async throws {
+        var adjusted = amount
+        if !currency.isDefault {
+            adjusted = try await getExchangedValue(amount: amount, date: date, base: currency, target: currencies.first(where: { $0.isDefault })!)
+        }
+        
+        let newExpense = Expense(amount: amount, adjustedAmount: adjusted, date: date, category: category, card: card, currency: currency, note: note)
         context.insert(newExpense)
         do {
             try context.save()
@@ -52,14 +59,25 @@ struct newExpense: View {
                         }
                     }
                     .pickerStyle(.menu)
+//                    .onChange(of: currency) { newCurrency in
+//                        // Update format when currency changes
+//                        let code = newCurrency?.acronym ?? "USD"
+//                        amountFormat = .currency(code: code)
+//                        print("Currency set to: \(code.acronym)")
+//                    }
                 }
                 
                 Section("Amount") {
                     HStack {
-                        TextField("0.0", value: $amount, format: .currency(code: currency?.acronym ?? ""))
+                        Text(currency?.symbol ?? "")
+                        TextField("0.0", value: $amount, format: .number)
+                            .keyboardType(.decimalPad)
                         Text(currency?.acronym ?? "")
                     }
                 }
+//                .onChange(of: currency) { _ in
+//                    amountFormat = .currency(code: defaultCurrency?.acronym ?? "USD")
+//                }
                 
                 Section("Category") {
                     Picker("Select Category:", selection: $category){
@@ -79,10 +97,17 @@ struct newExpense: View {
                 }
                 Section("Add Expense"){
                     Button("Submit", action: {
-                        addExpense(amount: amount, currency: currency!, card: card!, category: category!, date: date, note: note)
-                        amount = 0.0
-                        note = ""
-                        showSuccessful = true
+                        Task {
+                            do {
+                                try await addExpense(amount: amount, currency: currency!, card: card!, category: category!, date: date, note: note)
+                                amount = 0.0
+                                note = ""
+                                showSuccessful = true
+                            } catch {
+                                print("Failed to add expense")
+                            }
+                        }
+                        
                     })
                     .disabled(amount.isZero)
                 }
@@ -94,6 +119,7 @@ struct newExpense: View {
                     // Set default values once the data is fetched because you cannot initialize these values at the same time as all the other variables
                     if currency == nil {
                         currency = currencies.first(where: { $0.isDefault })
+//                        amountFormat = .currency(code: currency?.acronym ?? "USD")
                     }
                     if card == nil {
                         card = creditCards.first
@@ -103,6 +129,9 @@ struct newExpense: View {
                     }
                 }
             }
+        }
+        .onDisappear {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
 }

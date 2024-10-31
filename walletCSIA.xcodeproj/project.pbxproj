@@ -47,6 +47,7 @@
 		270142D72CA0905B00BD1D0C /* expenseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expenseRow.swift; sourceTree = "<group>"; };
 		271A5F002CA2FA42006C9CD0 /* dateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateHandler.swift; sourceTree = "<group>"; };
 		27A594D82CD3D4A900DB3AD3 /* exchangeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exchangeHandler.swift; sourceTree = "<group>"; };
+		27A594DA2CD42EC900DB3AD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		27D932E22CA3CA2000495792 /* sortExpenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sortExpenses.swift; sourceTree = "<group>"; };
 		27D932E42CA42FE900495792 /* graphScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = graphScreen.swift; sourceTree = "<group>"; };
 		27D932E62CA4327800495792 /* uponFirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uponFirstLaunch.swift; sourceTree = "<group>"; };
@@ -111,6 +112,7 @@
 		27ED881D2C99C55800D9B35B /* walletCSIA */ = {
 			isa = PBXGroup;
 			children = (
+				27A594DA2CD42EC900DB3AD3 /* Info.plist */,
 				27ED882F2C99C5F500D9B35B /* model */,
 				27ED882E2C99C5E700D9B35B /* view */,
 				27ED881E2C99C55800D9B35B /* walletCSIAApp.swift */,
@@ -442,10 +444,11 @@
 				DEVELOPMENT_ASSET_PATHS = "\"walletCSIA/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = walletCSIA/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -473,10 +476,11 @@
 				DEVELOPMENT_ASSET_PATHS = "\"walletCSIA/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = walletCSIA/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

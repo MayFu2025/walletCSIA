@@ -52,7 +52,7 @@ struct expenseRow: View {
         let category = Category(name: "Test", isDefault: true)
         let currency = Currency(acronym: "JPY", isDefault: true)
         let creditCard = creditCard(name: "Test Card", holder: "May", color1: .red, color2: .blue, cardProvider: "VisaIcon", defaultCurrency: currency, cashbackRate: 0.05)
-        let expense = Expense(amount: 10.0, date: .init(), category: category, card: creditCard, currency: currency, note: "")
+    let expense = Expense(amount: 10.0, adjustedAmount: 10.0, date: .init(), category: category, card: creditCard, currency: currency, note: "")
         
         // Use the modelContext to insert objects into the container
         let context = container.mainContext

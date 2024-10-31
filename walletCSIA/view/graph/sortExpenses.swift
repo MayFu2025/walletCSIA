@@ -47,7 +47,7 @@ func totalsByCategory(expensesSorted: Dictionary<Category, [Expense]>) -> Dictio
     for (key, value) in expensesSorted {
         var sum = 0.0
         for ex in value {
-            sum += ex.amount
+            sum += ex.adjustedAmount
         }
         totalsDictionary[key] = sum
     }
