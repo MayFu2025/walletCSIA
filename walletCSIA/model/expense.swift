@@ -27,9 +27,4 @@ class Expense {
         self.currency = currency
         self.note = note
     }
-    
-//    func setAdjustedAmount() { TODO: Currency converter
-//        @Query var currencies: [Currency]
-//        userDefaultCurrency = currencies.first(where: {$0.isDefault}
-//    }
 }

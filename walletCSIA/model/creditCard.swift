@@ -11,7 +11,7 @@ import SwiftUI
 
 @Model
 class creditCard {
-    @Attribute(.unique) var name: String
+    var name: String
     var holder: String
     
     var color1: [Double]

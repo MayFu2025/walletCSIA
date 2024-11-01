@@ -16,10 +16,12 @@ struct allCards: View {
     
     var body: some View {
         NavigationStack{
-            ForEach(creditCards, id: \.self) { card in
-                cardShape(cardName: card.name, holderName: card.holder, providerIcon: card.cardProvider, color1: card.color1, color2: card.color2)
+            ScrollView{
+                ForEach(creditCards, id: \.self) { card in
+                    cardShape(cardName: card.name, holderName: card.holder, providerIcon: card.cardProvider, color1: card.color1, color2: card.color2)
+                }
+                Text("")
             }
-            Text("")
             .navigationTitle("My Cards")
             .toolbar{
                 ToolbarItem{
