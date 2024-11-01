@@ -13,6 +13,7 @@ struct perCardView: View {
     @Query var expenses: [Expense]
     
     @State private var showEditCardSheet: Bool = false
+    @State var monthDate: Date = Date()
     
     private var cardExpenses: [Expense] {
         expenses.filter { expense in
@@ -21,12 +22,32 @@ struct perCardView: View {
     }
     private var cardExpensesByDate: Dictionary<Date, [Expense]> {sortByDate(expenseList: cardExpenses)}
     
+    private var monthSum : Double {
+        let expenseArray = sortGivenMonth(dateOfMonth: monthDate, expenses: cardExpenses)
+        let amounts = expenseArray.map { $0.adjustedAmount }
+        return amounts.reduce(0, +)
+    }
+    private var monthCashback : Double {
+        return monthSum * cardViewed.cashbackRate
+    }
+    
     
     var body: some View {
         NavigationStack{
-            cardGraph(card: cardViewed, expenses: cardExpenses)
-            
             List{
+                Section("Statistics"){
+                    HStack{
+                        DatePicker("Get Month from Date:",
+                                   selection: $monthDate,
+                                   displayedComponents: [.date]
+                        )
+                        .datePickerStyle(.compact)
+                        Spacer()
+                    }
+                    cardGraph(card: cardViewed, expenses: cardExpenses, month: monthDate)
+                    Text("Month Cashback: \(cardViewed.defaultCurrency.symbol) \(monthCashback)")
+                }
+                
                 ForEach(cardExpensesByDate.keys.sorted(), id: \.self) { date in
                     Section(header: Text(date.dashSeparated())) {
                         if let expensesForDate = cardExpensesByDate[date] {

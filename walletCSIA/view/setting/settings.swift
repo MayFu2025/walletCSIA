@@ -21,15 +21,6 @@ struct settings: View {
     @State var changeDefaultName: Bool = false
     @State var tentativeNewName: String = ""
     
-    var passcodeEnabled: Bool {
-        UserDefaults.standard.bool(forKey: "usePasscode")
-    }
-    var faceIDEnabled: Bool {
-        UserDefaults.standard.bool(forKey: "useFaceID")
-    }
-    @State var editPasscodeEnabled: Bool = false
-    @State var editFaceIDEnabled: Bool = false
-    
     
     var body: some View {
         NavigationStack{
@@ -51,20 +42,6 @@ struct settings: View {
                     }
                 }
                 
-                Section(header: Text("Passcode and FaceID")) {
-                    Toggle(isOn: $editPasscodeEnabled) {
-                        Text("Use Device Passcode")
-                    }
-                    .onChange(of: editPasscodeEnabled) {
-                        UserDefaults.standard.set(editPasscodeEnabled, forKey:"usePasscode")
-                    }
-                    Toggle(isOn: $editFaceIDEnabled) {
-                        Text("Use Device FaceID")
-                    }
-                    .onChange(of: editFaceIDEnabled) {
-                        UserDefaults.standard.set(editFaceIDEnabled, forKey:"useFaceID")
-                    }
-                }
                 
                 Section(header: Text("All Entries")) {
                     NavigationLink(destination: categoryListEditor()) {
@@ -81,11 +58,6 @@ struct settings: View {
                 Section(header: Text("Reset")) {
                     deleteAllConfirmation()
                 }
-                
-                .onAppear(perform: {
-                    editPasscodeEnabled = passcodeEnabled
-                    editFaceIDEnabled = faceIDEnabled
-                })
             }
             .navigationTitle("Settings")
         }

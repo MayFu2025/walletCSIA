@@ -14,6 +14,12 @@ extension Date {
             return df.string(from: self)
     }
     
+    func yearValue() -> String {
+            let df = DateFormatter()
+            df.setLocalizedDateFormatFromTemplate("YYYY")
+            return df.string(from: self)
+    }
+    
     func dashSeparated() -> String {
             let df = DateFormatter()
             df.setLocalizedDateFormatFromTemplate("yyyy-MM-dd")

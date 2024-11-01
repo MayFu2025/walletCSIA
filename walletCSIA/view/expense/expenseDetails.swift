@@ -10,6 +10,7 @@ import SwiftData
 
 struct expenseDetails: View {
     @Query var currencies: [Currency]
+    @State private var showEditExpenseSheet: Bool = false
 
     
     var expense: Expense
@@ -56,5 +57,16 @@ struct expenseDetails: View {
             }
         }
         .navigationTitle("Expense Details")
+        .toolbar{
+            ToolbarItem{
+                Button(action: {showEditExpenseSheet.toggle()}, label: {
+                    Image(systemName: "pencil")
+                })
+                .padding()
+                .sheet(isPresented: $showEditExpenseSheet) {
+                    editExpenseSheet(expenseEditing: expense)
+                }
+            }
+        }
     }
 }

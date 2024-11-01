@@ -9,8 +9,7 @@ import SwiftData
 import Charts
 
 struct monthGraph: View {
-    let calendar = Calendar.current
-    let currentDate = Date()
+    var month: Date
     
     @State var isPresenting: Bool = false
     @Query var categories: [Category]
@@ -20,14 +19,14 @@ struct monthGraph: View {
     @State private var clickedAngle: Double?
     
     var monthExpenses: Dictionary<Category, [Expense]> {
-        sortByCategory(expenseList: sortThisMonth(expenses: expenses))
+        sortByCategory(expenseList: sortGivenMonth(dateOfMonth: month, expenses: expenses))
     }
     var monthExpenseTotals: Dictionary<Category, Double> {
         totalsByCategory(expensesSorted: monthExpenses)
     }
     
     var monthSum : Double {
-        let thisMonth = sortThisMonth(expenses: expenses)
+        let thisMonth = sortGivenMonth(dateOfMonth: month, expenses: expenses)
         let amounts = thisMonth.map { $0.adjustedAmount }
         return amounts.reduce(0, +) // basically like the map function of an operation onto a variable (in this case 0), cool
     }
@@ -45,7 +44,7 @@ struct monthGraph: View {
                         innerRadius: .ratio(0.65),
                         angularInset: 2.0
                     )
-                    .foregroundStyle(by: .value("Category", key.name))
+                    .foregroundStyle(by: .value("Category", "\(key.name) (\(monthExpenseTotals[key] ?? 0))"))
                     .cornerRadius(10.0)
                 }
             }
@@ -56,7 +55,7 @@ struct monthGraph: View {
                 if let anchor = chartProxy.plotFrame {
                   let frame = geometry[anchor]
                     VStack{
-                        Text("\(currentDate.monthName()) Total")
+                        Text("\(month.yearValue()) \(month.monthName()) Total")
                         Text("\(defaultCurrency.symbol)\(String(format:"%.2f", monthSum))")
                     }
                     .position(x: frame.midX, y: frame.midY)

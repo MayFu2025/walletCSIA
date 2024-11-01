@@ -11,19 +11,17 @@ import Charts
 struct cardGraph: View {
     var card: creditCard
     var expenses: [Expense]
-    
-    let calendar = Calendar.current
-    let currentDate = Date()
+    var month: Date
     
     private var monthExpenses: Dictionary<Category, [Expense]> {
-        sortByCategory(expenseList: sortThisMonth(expenses: expenses))
+        sortByCategory(expenseList: sortGivenMonth(dateOfMonth: month, expenses: expenses))
     }
     private var monthExpenseTotals: Dictionary<Category, Double> {
         totalsByCategory(expensesSorted: monthExpenses)
     }
     private var monthSum : Double {
-        let thisMonth = sortThisMonth(expenses: expenses)
-        let amounts = thisMonth.map { $0.adjustedAmount }
+        let expenseArray = sortGivenMonth(dateOfMonth: month, expenses: expenses)
+        let amounts = expenseArray.map { $0.adjustedAmount }
         return amounts.reduce(0, +)
     }
     
@@ -36,7 +34,7 @@ struct cardGraph: View {
                             innerRadius: .ratio(0.65),
                             angularInset: 2.0
                         )
-                        .foregroundStyle(by: .value("Category", key.name))
+                        .foregroundStyle(by: .value("Category", "\(key.name) (\(monthExpenseTotals[key] ?? 0))"))
                         .cornerRadius(10.0)
                     }
                 }
@@ -46,7 +44,7 @@ struct cardGraph: View {
                     if let anchor = chartProxy.plotFrame {
                       let frame = geometry[anchor]
                         VStack{
-                            Text("\(currentDate.monthName()) Total")
+                            Text("Total")
                             Text("\(card.defaultCurrency.symbol)\(String(format:"%.2f", monthSum))")
                         }
                         .position(x: frame.midX, y: frame.midY)

@@ -6,20 +6,40 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct graphScreen: View {
-    @State var graphDate: Date
+    @State var monthDate: Date = Date()
+    @Query var expenses: [Expense]
+    @Query var currencies: [Currency]
+    
+    var monthSum : Double {
+        let thisMonth = sortGivenMonth(dateOfMonth: monthDate, expenses: expenses)
+        let amounts = thisMonth.map { $0.adjustedAmount }
+        return amounts.reduce(0, +)
+    }
+    
+    var defaultCurrency: Currency {
+        currencies.first(where: {$0.isDefault})!
+    }
     
     var body: some View {
         NavigationStack {
+            List{
+                Section("Graph"){
+                    HStack{
+                        DatePicker("Get Month from Date:",
+                                   selection: $monthDate,
+                                   displayedComponents: [.date]
+                        )
+                        .datePickerStyle(.compact)
+                        Spacer()
+                    }
+                    
+                    monthGraph(month: monthDate)
+                }
+            }
             
-            DatePicker("Get Month from Date",
-                    selection: $graphDate,
-                       displayedComponents: [.date]
-                )
-                .datePickerStyle(.compact)
-            
-            monthGraph()  //TODO: work on this
                 .navigationTitle("Monthly Graph")
         }
     }

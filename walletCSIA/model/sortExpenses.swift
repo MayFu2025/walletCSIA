@@ -7,30 +7,15 @@
 
 import Foundation
 
-func sortThisMonth(expenses: [Expense]) -> [Expense]{
-    let currentDate = Date()
+func sortGivenMonth(dateOfMonth: Date, expenses: [Expense]) -> [Expense]{
     let calendar = Calendar.current
-    let currentYear = calendar.component(.year, from: currentDate)
-    let currentMonth = calendar.component(.month, from: currentDate)
+    let givenYear = calendar.component(.year, from: dateOfMonth)
+    let givenMonth = calendar.component(.month, from: dateOfMonth)
     
     let filteredExpenses = expenses.filter { expense in
         let expenseYear = calendar.component(.year, from: expense.date)
         let expenseMonth = calendar.component(.month, from: expense.date)
-        return expenseYear == currentYear && expenseMonth == currentMonth
-    }
-    
-    return filteredExpenses
-}
-
-
-func sortThisYear(expenses: [Expense]) -> [Expense]{
-    let currentDate = Date()
-    let calendar = Calendar.current
-    let currentYear = calendar.component(.year, from: currentDate)
-    
-    let filteredExpenses = expenses.filter { expense in
-        let expenseYear = calendar.component(.year, from: expense.date)
-        return expenseYear == currentYear
+        return expenseYear == givenYear && expenseMonth == givenMonth
     }
     
     return filteredExpenses

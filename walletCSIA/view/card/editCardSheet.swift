@@ -17,7 +17,7 @@ struct editCardSheet: View {
     let cardEditing: creditCard
     
     @State private var cardName: String = ""
-    @State private var holderName: String = "" // Change to UserData Username
+    @State private var holderName: String = "" 
     @State private var providerIcon: String = "None"
     @State private var color1: Color = Color.gray
     @State private var color2: Color = Color.black

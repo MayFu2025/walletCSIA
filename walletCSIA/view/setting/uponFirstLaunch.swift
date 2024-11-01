@@ -27,8 +27,6 @@ struct uponFirstLaunch: View {
     
     @State var defaultName: String = ""
     @State var selectionCurrency: String = "USD"
-    @State var usePasscode: Bool = false
-    @State var useFaceID: Bool = false
     
     var body: some View {
         NavigationStack{
@@ -44,14 +42,7 @@ struct uponFirstLaunch: View {
                     }
                     .pickerStyle(.menu)
                     }
-                Section("Set Passcode") {
-                    Toggle(isOn: $usePasscode) {
-                        Text("Use Device Passcode")
-                    }
-                    Toggle(isOn: $useFaceID) {
-                        Text("Allow FaceID")
-                    }
-                }
+
             }
             .navigationTitle("Welcome \(defaultName)")
             .toolbar{
@@ -72,8 +63,6 @@ struct uponFirstLaunch: View {
         context.insert(defaultCurrency)
         context.insert(defaultCategory)
         UserDefaults.standard.set(defaultName, forKey: "defaultName")
-        UserDefaults.standard.set(usePasscode, forKey: "usePasscode")
-        UserDefaults.standard.set(useFaceID, forKey: "useFaceID")
         do {
             try context.save()
             print("App Initialized")
