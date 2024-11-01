@@ -44,7 +44,7 @@ struct ContentView: View {
         .onAppear{
 //            if UserDefaults.standard.bool(forKey: "usePasscode") {
 //                authenticateUser()
-//            }
+//            } TODO: Figure this out
             showFirstLaunch = returnCheckFirstLaunch()
         }
         .sheet(isPresented: $showFirstLaunch) {

@@ -46,8 +46,8 @@ struct expenseDetails: View {
                 Section("Card Details"){
                     Text("Name: \(expense.card.name)")
                     Text("Currency: \(expense.card.defaultCurrency.name)")
-                    Text("Cashback Rate: \(expense.card.cashbackRate)%")
-                    Text("Expected Cashback (Default Currency): \(expense.card.defaultCurrency.symbol) \(expense.adjustedAmount*expense.card.cashbackRate)")
+                    Text("Cashback Rate: \(String(format: "%.2f", expense.card.cashbackRate*100))%")
+                    Text("Expected Cashback (Default Currency): \(expense.card.defaultCurrency.symbol) \(String(format: "%.2f", expense.adjustedAmount*expense.card.cashbackRate))")
                 }
                 
                 Section("Notes"){

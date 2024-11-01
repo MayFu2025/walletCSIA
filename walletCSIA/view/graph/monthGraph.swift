@@ -29,7 +29,7 @@ struct monthGraph: View {
     var monthSum : Double {
         let thisMonth = sortThisMonth(expenses: expenses)
         let amounts = thisMonth.map { $0.adjustedAmount }
-        return amounts.reduce(0, +)
+        return amounts.reduce(0, +) // basically like the map function of an operation onto a variable (in this case 0), cool
     }
     
     var defaultCurrency: Currency {
@@ -56,8 +56,8 @@ struct monthGraph: View {
                 if let anchor = chartProxy.plotFrame {
                   let frame = geometry[anchor]
                     VStack{
-                        Text("\(currentDate.monthName()) by Category")
-                        Text("\(defaultCurrency.symbol)\(monthSum)")
+                        Text("\(currentDate.monthName()) Total")
+                        Text("\(defaultCurrency.symbol)\(String(format:"%.2f", monthSum))")
                     }
                     .position(x: frame.midX, y: frame.midY)
                 }

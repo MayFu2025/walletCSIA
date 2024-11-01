@@ -1,18 +1,20 @@
 //
-//  newCardSheet.swift
+//  editCardSheet.swift
 //  walletCSIA
 //
-//  Created by May Fujita on 2024/09/19.
+//  Created by May Fujita on 2024/11/01.
 //
 
 import SwiftUI
 import SwiftData
 
-struct newCardSheet: View {
+struct editCardSheet: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     
     @Query var currencies: [Currency]
+    
+    let cardEditing: creditCard
     
     @State private var cardName: String = ""
     @State private var holderName: String = "" // Change to UserData Username
@@ -49,19 +51,11 @@ struct newCardSheet: View {
                     ColorPicker("Card Color 1", selection: $color1)
                     ColorPicker("Card Color 2", selection: $color2)
                 }
-                Section("Card Default Currency"){
-                    Picker("Select Card Currency", selection: $defaultCurrency){
-                        ForEach(currencies, id: \.self) {
-                            currency in
-                            HStack{
-                                Text(currency.acronym)
-                                Spacer()
-                                Text(currency.symbol)
-                            }
-                            .tag(currency as Currency?)
-                        }
+                Section("Card Default Currency (Unable to Edit)"){
+                    HStack{
+                        Text(cardEditing.defaultCurrency.name)
+                        Text("(\(cardEditing.defaultCurrency.acronym))")
                     }
-                    .pickerStyle(.menu)
                 }
                 Section("Cashback Rate (Percent)") {
                     TextField("Enter card cashback rate",value:$cashbackRate,format: .percent)
@@ -69,40 +63,41 @@ struct newCardSheet: View {
                 }
             }
             .onAppear {
-                if defaultCurrency == nil {
-                    defaultCurrency = currencies.first(where: { $0.isDefault })
-                }
-                holderName = UserDefaults.standard.string(forKey: "defaultName") ?? ""
+                cardName = cardEditing.name
+                holderName = cardEditing.holder
+                providerIcon = cardEditing.cardProvider
+                color1 = extractSwiftUIColor(RGB: cardEditing.color1)
+                color2 = extractSwiftUIColor(RGB: cardEditing.color2)
+                cashbackRate = cardEditing.cashbackRate
             }
-            .navigationTitle("Create New Card")
+            .navigationTitle("Update Card")
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading){
                     Button(action: {dismiss()}, label: {Text("Cancel")})
                 }
                 ToolbarItem(placement: .confirmationAction){
                     Button(action: {
-                        addCard()
+                        updateCard()
                         dismiss()
-                    }, label: {Text("Add Card")})
+                    }, label: {Text("Update Card")})
                 }
             }
         }
     }
     
-    func addCard() {
-        let newCard = creditCard(name: cardName, holder: holderName, color1: color1, color2: color2, cardProvider: providerIcon, defaultCurrency: defaultCurrency!, cashbackRate: cashbackRate)
-        context.insert(newCard)
+    func updateCard() {
+        cardEditing.name = cardName
+        cardEditing.holder = holderName
+        cardEditing.cardProvider = providerIcon
+        cardEditing.color1 = color1.asRGB()
+        cardEditing.color2 = color2.asRGB()
+        cardEditing.cashbackRate = cashbackRate
+        
         do {
             try context.save()
-            print("Card saved: \(newCard.name)")
+            print("Card updated: \(cardEditing.name)")
         } catch {
-            print("Failed to save card: \(error)")
+            print("Failed to update card: \(error)")
         }
     }
-}
-
-#Preview {
-    let container = try! ModelContainer(for: Currency.self, creditCard.self)
-    return newCardSheet()
-        .modelContext(container.mainContext)
 }

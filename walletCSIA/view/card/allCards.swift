@@ -18,7 +18,9 @@ struct allCards: View {
         NavigationStack{
             ScrollView{
                 ForEach(creditCards, id: \.self) { card in
-                    cardShape(cardName: card.name, holderName: card.holder, providerIcon: card.cardProvider, color1: card.color1, color2: card.color2)
+                    NavigationLink(destination: perCardView(cardViewed: card)){
+                        cardShape(cardName: card.name, holderName: card.holder, providerIcon: card.cardProvider, color1: card.color1, color2: card.color2)
+                    }
                 }
                 Text("")
             }

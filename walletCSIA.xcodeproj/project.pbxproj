@@ -11,6 +11,8 @@
 		271A5F012CA2FA42006C9CD0 /* dateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A5F002CA2FA42006C9CD0 /* dateHandler.swift */; };
 		27A594D92CD3D4A900DB3AD3 /* exchangeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A594D82CD3D4A900DB3AD3 /* exchangeHandler.swift */; };
 		27A594DE2CD448CE00DB3AD3 /* expenseDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A594DD2CD448CE00DB3AD3 /* expenseDetails.swift */; };
+		27A594E02CD4719200DB3AD3 /* cardGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A594DF2CD4719200DB3AD3 /* cardGraph.swift */; };
+		27A594E22CD473F600DB3AD3 /* editCardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A594E12CD473F600DB3AD3 /* editCardSheet.swift */; };
 		27D932E32CA3CA2000495792 /* sortExpenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D932E22CA3CA2000495792 /* sortExpenses.swift */; };
 		27D932E52CA42FE900495792 /* graphScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D932E42CA42FE900495792 /* graphScreen.swift */; };
 		27D932E72CA4327800495792 /* uponFirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D932E62CA4327800495792 /* uponFirstLaunch.swift */; };
@@ -49,6 +51,8 @@
 		271A5F002CA2FA42006C9CD0 /* dateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateHandler.swift; sourceTree = "<group>"; };
 		27A594D82CD3D4A900DB3AD3 /* exchangeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exchangeHandler.swift; sourceTree = "<group>"; };
 		27A594DD2CD448CE00DB3AD3 /* expenseDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expenseDetails.swift; sourceTree = "<group>"; };
+		27A594DF2CD4719200DB3AD3 /* cardGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cardGraph.swift; sourceTree = "<group>"; };
+		27A594E12CD473F600DB3AD3 /* editCardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editCardSheet.swift; sourceTree = "<group>"; };
 		27D932E22CA3CA2000495792 /* sortExpenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sortExpenses.swift; sourceTree = "<group>"; };
 		27D932E42CA42FE900495792 /* graphScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = graphScreen.swift; sourceTree = "<group>"; };
 		27D932E62CA4327800495792 /* uponFirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uponFirstLaunch.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 		27ED882F2C99C5F500D9B35B /* model */ = {
 			isa = PBXGroup;
 			children = (
+				27D932E22CA3CA2000495792 /* sortExpenses.swift */,
 				27ED88502C9BBC0D00D9B35B /* worldCurrency.swift */,
 				27ED88322C99C63E00D9B35B /* currency.swift */,
 				27ED88342C99C65900D9B35B /* category.swift */,
@@ -163,8 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				27ED88462C9B2B2200D9B35B /* monthGraph.swift */,
-				27D932E22CA3CA2000495792 /* sortExpenses.swift */,
 				27D932E42CA42FE900495792 /* graphScreen.swift */,
+				27A594DF2CD4719200DB3AD3 /* cardGraph.swift */,
 			);
 			path = graph;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				27ED88562C9BD75200D9B35B /* newCardSheet.swift */,
 				27ED88582C9BD7D500D9B35B /* cardShape.swift */,
 				27D932EA2CA5091F00495792 /* perCardView.swift */,
+				27A594E12CD473F600DB3AD3 /* editCardSheet.swift */,
 			);
 			path = card;
 			sourceTree = "<group>";
@@ -294,6 +300,7 @@
 				27ED88592C9BD7D500D9B35B /* cardShape.swift in Sources */,
 				27D932E92CA45B2C00495792 /* deleteAllConfirmation.swift in Sources */,
 				27ED88472C9B2B2200D9B35B /* monthGraph.swift in Sources */,
+				27A594E02CD4719200DB3AD3 /* cardGraph.swift in Sources */,
 				270142D82CA0905B00BD1D0C /* expenseRow.swift in Sources */,
 				27ED88572C9BD75200D9B35B /* newCardSheet.swift in Sources */,
 				27A594D92CD3D4A900DB3AD3 /* exchangeHandler.swift in Sources */,
@@ -309,6 +316,7 @@
 				271A5F012CA2FA42006C9CD0 /* dateHandler.swift in Sources */,
 				27ED881F2C99C55800D9B35B /* walletCSIAApp.swift in Sources */,
 				27ED88372C99C67B00D9B35B /* expense.swift in Sources */,
+				27A594E22CD473F600DB3AD3 /* editCardSheet.swift in Sources */,
 				27ED88532C9BD32B00D9B35B /* newCurrency.swift in Sources */,
 				27ED885F2C9C7FE600D9B35B /* logoIcons.swift in Sources */,
 			);

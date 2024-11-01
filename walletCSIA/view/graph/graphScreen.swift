@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct graphScreen: View {
+    @State var graphDate: Date
     
     var body: some View {
         NavigationStack {
-            monthGraph()
+            
+            DatePicker("Get Month from Date",
+                    selection: $graphDate,
+                       displayedComponents: [.date]
+                )
+                .datePickerStyle(.compact)
+            
+            monthGraph()  //TODO: work on this
                 .navigationTitle("Monthly Graph")
         }
     }
-}
-
-#Preview {
-    graphScreen()
 }
