@@ -47,7 +47,7 @@ func getExchangedValue(amount: Double, date: Date, base: Currency, target: Curre
         }
         
         var url = URLComponents(string: "https://api.freecurrencyapi.com/v1/latest")!
-        let parameters = ["apikey": apiKey, "base_currency": base.acronym, "currencies": target.acronym].map {  // use dictionary to efficiently reformat into query items using map
+        let parameters = ["apikey": apiKey, "base_currency": base.acronym, "currencies": target.acronym].map {  // use map on dictionary to reformat into query items
             URLQueryItem(name: $0.key, value: $0.value)
         }
         
